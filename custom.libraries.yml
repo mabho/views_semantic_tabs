@@ -1,0 +1,8 @@
+custom:
+  version: 1.x
+  css:
+    theme:
+      css/jquery-ui.css: {}
+  js:
+    js/jquery-1.10.2.js: {}
+    js/jquery-ui.js: {}

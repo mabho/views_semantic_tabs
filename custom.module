@@ -1,0 +1,66 @@
+<?php
+
+/**
+ * @file
+ * Contains custom.module..
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function custom_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the custom module.
+    case 'help.page.custom':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('My Awesome Module') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * @param array $attachments
+ */
+function custom_page_attachments(array &$attachments) {
+  // $attachments['#attached']['library'][] = 'custom/custom';
+}
+
+/**
+ * Implements hook_theme().
+ */
+function custom_theme($existing, $type, $theme, $path) {
+  \Drupal::moduleHandler()->loadInclude('custom', 'inc', 'custom.theme');
+
+  // Some quasi clever array merging here.
+  $base = array(
+    'file' => 'custom.theme.inc',
+  );
+
+  // Our extra version of pager from pager.inc
+  $hooks['views_mini_pager'] = $base + array(
+    'variables' => array('tags' => array(), 'quantity' => 9, 'element' => 0, 'parameters' => array()),
+  );
+
+  // Default view themes
+  $hooks['views_view_field'] = $base + array(
+    'variables' => array('view' => NULL, 'field' => NULL, 'row' => NULL),
+  );
+  $hooks['views_view_grouping'] = $base + array(
+    'variables' => array('view' => NULL, 'grouping' => NULL, 'grouping_level' => NULL, 'rows' => NULL, 'title' => NULL),
+  );
+
+  $hooks['views_form_views_form'] = $base + array(
+    'render element' => 'form',
+  );
+
+  $hooks['views_exposed_form'] = $base + array(
+    'render element' => 'form',
+  );
+
+  return $hooks;
+}
