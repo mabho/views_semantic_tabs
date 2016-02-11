@@ -1,5 +1,5 @@
 (function ($) {
     $(function() {
-        $( "#tabs" ).tabs();
+        $( ".views-semantic-tabs" ).tabs();
     });
 })(jQuery);
