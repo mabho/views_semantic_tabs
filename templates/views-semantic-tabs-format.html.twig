@@ -19,10 +19,13 @@
  */
 #}
 
-
-{% for row in rows.grouping %}
-    <h1>{{ row }}</h1>
-{% endfor %}
+<div id="tabs">
+    <ul>
+        {% for row in rows.grouping %}
+            <li><a href="#">{{ row }}</a></li>
+        {% endfor %}
+    </ul>
+</div>
 
 
 {#{% if attributes -%}#}
