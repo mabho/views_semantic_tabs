@@ -27,6 +27,13 @@
     </ul>
 </div>
 
+</hr>
+
+{% set i = 0 %}
+{% for row in rows %}
+    <div id="tabs-{{ i }}">{{ row.content }}</div>
+    {% set i = i + 1 %}
+{% endfor %}
 
 {#{% if attributes -%}#}
     {#<div{{ attributes }}>#}
@@ -38,9 +45,9 @@
         {#&#123;&#35;{% endif %}&#35;&#125;#}
     {#&#123;&#35;</ul>&#35;&#125;#}
 
-    {#&#123;&#35;{% for row in rows %}&#35;&#125;#}
-        {#&#123;&#35;<div {{ row.attributes }}>{{ row.content }}</div>&#35;&#125;#}
-    {#&#123;&#35;{% endfor %}&#35;&#125;#}
+    {#{% for row in rows %}#}
+        {#<div {{ row.attributes }}>{{ row.content }}</div>#}
+    {#{% endfor %}#}
 
 
 {#{% if attributes -%}#}
