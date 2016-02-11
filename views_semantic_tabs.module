@@ -37,27 +37,6 @@ function views_semantic_tabs_help($route_name, RouteMatchInterface $route_match)
  */
 function template_preprocess_views_semantic_tabs_format(&$variables) {
     $handler  = $variables['view']->style_plugin;
-
-//    // Fetch classes from handler options.
-//    if ($handler->options['class']) {
-//        $class = explode(' ', $handler->options['class']);
-//        $class = array_map('\Drupal\Component\Utility\Html::cleanCssIdentifier', $class);
-//
-//        // Initialize a new attribute class for $class.
-//        $variables['list']['attributes'] = new Attribute(array('class' => $class));
-//    }
-//
-//    // Fetch wrapper classes from handler options.
-//    if ($handler->options['wrapper_class']) {
-//        $wrapper_class = explode(' ', $handler->options['wrapper_class']);
-//        $variables['attributes']['class'] = array_map('\Drupal\Component\Utility\Html::cleanCssIdentifier', $wrapper_class);
-//    }
-//
-//    $variables['list']['type'] = $handler->options['type'];
-
-    // **************************************************** //
-    //template_preprocess_views_view_unformatted($variables);
-
     $view = $variables['view'];
     $rows = $variables['rows'];
     $style = $view->style_plugin;
