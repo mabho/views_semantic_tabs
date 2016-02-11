@@ -68,7 +68,8 @@ class ViewsSemanticTabs extends StylePluginBase {
           '#title' => $this->t('Grouping field'),
           '#options' => $options,
           '#default_value' => $grouping,
-          '#description' => $this->t('You may optionally specify a field by which to group the records. Leave blank to not group.'),
+          '#description' => $this->t('You should specify a field by which to group the records.'),
+          '#required' => TRUE,
       );
   }
 
