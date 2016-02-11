@@ -18,24 +18,34 @@
  * @ingroup themeable
  */
 #}
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<link rel="stylesheet" href="/resources/demos/style.css">
 
+<script>
+    $(function() {
+        $( "#tabs" ).tabs();
+    });
+</script>
 
-kkk
 <div id="tabs">
     <ul>
+        {% set i = 1 %}
         {% for row in rows.group %}
-            <li><a href="#">{{ row }}</a></li>
+            <li><a href="#tabs-{{ i }}">{{ row }}</a></li>
+            {% set i = i + 1 %}
         {% endfor %}
     </ul>
+
+{% set j = 1 %}
+{% for row in rows %}
+    <div id="tabs-{{ j }}">{{ row.content }}</div>
+    {% set j = j + 1 %}
+{% endfor %}
+
 </div>
 
-</hr>
-
-{% set i = 0 %}
-{% for row in rows %}
-    <div id="tabs-{{ i }}">{{ row.content }}</div>
-    {% set i = i + 1 %}
-{% endfor %}
 
 {#{% if attributes -%}#}
     {#<div{{ attributes }}>#}
