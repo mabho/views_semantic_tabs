@@ -18,78 +18,72 @@
  * @ingroup themeable
  */
 #}
-<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-<script src="//code.jquery.com/jquery-1.10.2.js"></script>
-<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-<link rel="stylesheet" href="/resources/demos/style.css">
+{#<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">#}
+{#&#123;&#35;<script src="//code.jquery.com/jquery-1.10.2.js"></script>&#35;&#125;#}
+{#&#123;&#35;<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>&#35;&#125;#}
+{#<link rel="stylesheet" href="/resources/demos/style.css">#}
 
-<script>
-    $(function() {
-        $( "#tabs" ).tabs();
-    });
-</script>
+{#<script>#}
+    {#$(function() {#}
+        {#$( "#tabs" ).tabs();#}
+    {#});#}
+{#</script>#}
+<div id="tabs-container">
 
-<div id="tabs">
-    <ul>
+    <ul class="tabs-menu">
         {% set i = 1 %}
         {% for row in rows.group %}
-            <li><a href="#tabs-{{ i }}">{{ row }}</a></li>
+
+            {% if i < 2 %}
+                <li class="current"><a href="#tab-{{ i }}">{{ row }}</a></li>
+            {% endif %}
+        {% if i > 1 %}
+            <li><a href="#tab-{{ i }}">{{ row }}</a></li>
+        {% endif %}
             {% set i = i + 1 %}
         {% endfor %}
     </ul>
 
+<div class="tab">
+
 {% set j = 1 %}
 {% for row in rows %}
-    <div id="tabs-{{ j }}">{{ row.content }}</div>
+
+    {#{% if j < 2 %}#}
+        <div class="tab-content" id="tab-{{ j }}">{{ row.content }}</div>
+    {#{% endif %}#}
+
+    {#{% if j > 1 %}#}
+      {#<div id="tab-{{ j }}">{{ row.content }}</div>#}
+    {#{% endif %}#}
     {% set j = j + 1 %}
 {% endfor %}
 
 </div>
-
-
-{#{% if attributes -%}#}
-    {#<div{{ attributes }}>#}
-{#{% endif %}#}
-
-    {#&#123;&#35;<ul {{ list.attributes }}>&#35;&#125;#}
-        {#&#123;&#35;{% if title %}&#35;&#125;#}
-            {#&#123;&#35;<li>{{ title }}</li>&#35;&#125;#}
-        {#&#123;&#35;{% endif %}&#35;&#125;#}
-    {#&#123;&#35;</ul>&#35;&#125;#}
-
-    {#{% for row in rows %}#}
-        {#<div {{ row.attributes }}>{{ row.content }}</div>#}
-    {#{% endfor %}#}
-
-
-{#{% if attributes -%}#}
-    {#</div>#}
-{#{% endif %}#}
+</div>
 
 
 
-
-
-{#<div id="tabs">#}
-    {#<ul>#}
-        {#{% set i = 0 %}#}
-        {#{% for row in rows %}#}
-            {#<li><a href=" #tabs-{{ i }} ">Tabs-{{ i }}</a></li>#}
-            {#{% set i = i + 1 %}#}
-        {#{% endfor %}#}
-
-
-        {#&#123;&#35;<li><a href="#tabs-1">Nunc tincidunt</a></li>&#35;&#125;#}
-        {#&#123;&#35;<li><a href="#tabs-2">Proin dolor</a></li>&#35;&#125;#}
-        {#&#123;&#35;<li><a href="#tabs-3">Aenean lacinia</a></li>&#35;&#125;#}
+{#<div id="tabs-container">#}
+    {#<ul class="tabs-menu">#}
+        {#<li class="current"><a href="#tab-1">Tab 1</a></li>#}
+        {#<li><a href="#tab-2">Tab 2</a></li>#}
+        {#<li><a href="#tab-3">Tab 3</a></li>#}
+        {#<li><a href="#tab-4">Tab 4</a></li>#}
     {#</ul>#}
-    {#<div id="tabs-1">#}
-        {#<p>content - 1</p>#}
-    {#</div>#}
-    {#<div id="tabs-2">#}
-        {#<p>content - 1</p>#}
-    {#</div>#}
-    {#<div id="tabs-3">#}
+    {#<div class="tab">#}
+        {#<div id="tab-1" class="tab-content">#}
+            {#<p>Lorem ipsu.</p>#}
+        {#</div>#}
+        {#<div id="tab-2" class="tab-content">#}
+            {#<p>Donec semper dictum sem, </p>#}
 
+        {#</div>#}
+        {#<div id="tab-3" class="tab-content">#}
+            {#<p>Duis egestas fermentum ipsum et  </p>#}
+        {#</div>#}
+        {#<div id="tab-4" class="tab-content">#}
+            {#<p>Proin sollicitudin tincidunt quam, ipharetra cursus odio. </p>#}
+        {#</div>#}
     {#</div>#}
 {#</div>#}
