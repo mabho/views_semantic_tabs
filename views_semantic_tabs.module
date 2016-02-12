@@ -8,7 +8,6 @@
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\Core\Template\Attribute;
 
-
 /**
  * Implements hook_help().
  */
@@ -24,7 +23,6 @@ function views_semantic_tabs_help($route_name, RouteMatchInterface $route_match)
     default:
   }
 }
-
 
 /**
  * Prepares variables for Views HTML list templates.
@@ -81,4 +79,5 @@ function template_preprocess_views_semantic_tabs_format(&$variables) {
         // Add list <a> href value without #
         $variables['list']['href'] = new Attribute(array('href' => ''));
     }
+
 }
