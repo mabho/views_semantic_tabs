@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\views\Plugin\views\style\HtmlList.
- */
-
 namespace Drupal\views_semantic_tabs\Plugin\views\style;
 
 use Drupal\Core\Form\FormStateInterface;
