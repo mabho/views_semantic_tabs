@@ -31,3 +31,4 @@ MAINTAINERS
 Current maintainers:
  * Krishna kanth (krknth) - https://drupal.org/u/krknth
  * Neeraj kumar (neerajskydiver) - https://drupal.org/u/neerajskydiver
+ * CLAUSE Dominique (Dom.) - https://drupal.org/u/dom.
