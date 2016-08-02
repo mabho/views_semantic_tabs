@@ -42,9 +42,7 @@ function template_preprocess_views_semantic_tabs_format(&$variables) {
   $options = $style->options;
   $variables['fields'] = $fields;
 
-  // add jquery & jquery ui
-  $variables['view']->element['#attached']['library'][] = 'core/jquery.ui.tabs';
-  $variables['view']->element['#attached']['library'][] = 'core/jquery';
+  // Attach our library.
   $variables['view']->element['#attached']['library'][] = 'views_semantic_tabs/views-semantic-tabs';
 
   // Get first group field selected

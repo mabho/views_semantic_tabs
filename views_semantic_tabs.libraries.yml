@@ -7,4 +7,5 @@ views-semantic-tabs:
       css/views-semantic-tabs.css: {}
   dependencies:
     - core/jquery
+    - core/jquery.ui.tabs
     - core/drupal
