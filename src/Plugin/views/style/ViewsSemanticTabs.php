@@ -59,6 +59,18 @@ class ViewsSemanticTabs extends StylePluginBase {
       '#description' => $this->t('You should specify a field by which to group the records.'),
       '#required' => TRUE,
     ];
+    $form['advanced'] = [
+      '#type' => 'details',
+      '#open' => FALSE,
+      '#title' => $this->t('Advanced options'),
+      '#description' => $this->t('Advanced options will override default jQuery tabs options. See http://api.jqueryui.com/tabs for more information.'),
+    ];
+    $form['advanced']['options'] = [
+      '#type' => 'textarea',
+      '#title' => $this->t('Your advanced options'),
+      '#description' => $this->t('Please enter each values on a new line, using the format: <em>key:value,</em>.'),
+      '#default_value' => $this->options['advanced']['options'],
+    ];
   }
 
   /**
@@ -67,6 +79,10 @@ class ViewsSemanticTabs extends StylePluginBase {
   protected function defineOptions() {
     $options = parent::defineOptions();
     $options['group'] = ['default' => []];
+    $options['advanced'] = [
+      'default' => '',
+      'options' => ['default' => '']
+    ];
     return $options;
   }
 }

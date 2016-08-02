@@ -9,3 +9,4 @@ views-semantic-tabs:
     - core/jquery
     - core/jquery.ui.tabs
     - core/drupal
+    - core/drupalSettings
