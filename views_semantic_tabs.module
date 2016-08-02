@@ -34,50 +34,49 @@ function views_semantic_tabs_help($route_name, RouteMatchInterface $route_match)
  *   - view: A View object.
  */
 function template_preprocess_views_semantic_tabs_format(&$variables) {
-    $handler  = $variables['view']->style_plugin;
-    $view = $variables['view'];
-    $rows = $variables['rows'];
-    $style = $view->style_plugin;
-    $fields = &$view->field;
-    $options = $style->options;
-    $variables['fields'] = $fields;
+  $handler  = $variables['view']->style_plugin;
+  $view = $variables['view'];
+  $rows = $variables['rows'];
+  $style = $view->style_plugin;
+  $fields = &$view->field;
+  $options = $style->options;
+  $variables['fields'] = $fields;
 
-    // add jquery & jquery ui
-    $variables['view']->element['#attached']['library'][] = 'core/jquery.ui.tabs';
-    $variables['view']->element['#attached']['library'][] = 'core/jquery';
-    $variables['view']->element['#attached']['library'][] = 'views_semantic_tabs/views-semantic-tabs';
+  // add jquery & jquery ui
+  $variables['view']->element['#attached']['library'][] = 'core/jquery.ui.tabs';
+  $variables['view']->element['#attached']['library'][] = 'core/jquery';
+  $variables['view']->element['#attached']['library'][] = 'views_semantic_tabs/views-semantic-tabs';
 
-    // Get first group field selected
-    if($options){
-        $first_group_field = $options['group'];
+  // Get first group field selected
+  if ($options){
+    $first_group_field = $options['group'];
+  }
+
+  // Add tabs id to main div
+  $variables['attributes'] = new Attribute(['id' => 'tabs']);
+  $fields = &$view->field;
+
+  $variables['default_row_class'] = !empty($options['default_row_class']);
+  foreach ($rows as $id => $row) {
+    // todo : hide group field from row content
+    // Skip building the attributes and content if the field is to be excluded
+    // from the display.
+    //  $fields[$first_group_field]->options['exclude'] = ture;
+    //  if (!empty($fields[$first_group_field]->options['exclude'])) {
+    //    continue;
+    //  }
+
+    // todo : group field value should be plain text
+    $field_output = $handler->getField($id, $first_group_field);
+    $variables['rows']['group'][] = $field_output;
+    $variables['rows'][$id] = [];
+    $variables['rows'][$id]['content'] = $row;
+    $variables['rows'][$id]['attributes'] = new Attribute();
+    if ($row_class = $view->style_plugin->getRowClass($id)) {
+      $variables['rows'][$id]['attributes']->addClass($row_class);
     }
 
-    // Add tabs id to main div
-    $variables['attributes'] = new Attribute(array('id' => 'tabs'));
-    $fields = &$view->field;
-
-    $variables['default_row_class'] = !empty($options['default_row_class']);
-    foreach ($rows as $id => $row) {
-        // todo : hide group field from row content
-        // Skip building the attributes and content if the field is to be excluded
-        // from the display.
-        //  $fields[$first_group_field]->options['exclude'] = ture;
-        //  if (!empty($fields[$first_group_field]->options['exclude'])) {
-        //    continue;
-        //  }
-
-        // todo : group field value should be plain text
-        $field_output = $handler->getField($id, $first_group_field);
-        $variables['rows']['group'][] = $field_output;
-        $variables['rows'][$id] = array();
-        $variables['rows'][$id]['content'] = $row;
-        $variables['rows'][$id]['attributes'] = new Attribute();
-        if ($row_class = $view->style_plugin->getRowClass($id)) {
-          $variables['rows'][$id]['attributes']->addClass($row_class);
-        }
-
-        // Add list <a> href value without #
-        $variables['list']['href'] = new Attribute(array('href' => ''));
-    }
-
+    // Add list <a> href value without #
+    $variables['list']['href'] = new Attribute(['href' => '']);
+  }
 }

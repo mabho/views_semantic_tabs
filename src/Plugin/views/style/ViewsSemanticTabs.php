@@ -32,21 +32,12 @@ class ViewsSemanticTabs extends StylePluginBase {
    */
   protected $usesRowClass = TRUE;
 
-    /**
-     * Does the style plugin support grouping of rows.
-     *
-     * @var bool
-     */
-    protected $usesGrouping = FALSE;
-
   /**
-   * Set default options
+   * Does the style plugin support grouping of rows.
+   *
+   * @var bool
    */
-  protected function defineOptions() {
-    $options = parent::defineOptions();
-    $options['group'] = array('default' => array());
-    return $options;
-  }
+  protected $usesGrouping = FALSE;
 
   /**
    * Render the given style.
@@ -54,18 +45,28 @@ class ViewsSemanticTabs extends StylePluginBase {
   public function buildOptionsForm(&$form, FormStateInterface $form_state) {
     parent::buildOptionsForm($form, $form_state);
 
-      $options = array('' => $this->t('- None -'));
-      $field_labels = $this->displayHandler->getFieldLabels(TRUE);
-      $options += $field_labels;
-      $grouping = $this->options['group'];
-      $form['group'] = array(
-          '#type' => 'select',
-          '#title' => $this->t('Grouping field'),
-          '#options' => $options,
-          '#default_value' => $grouping,
-          '#description' => $this->t('You should specify a field by which to group the records.'),
-          '#required' => TRUE,
-      );
+    $options = [
+      '' => $this->t('- None -')
+     ];
+    $field_labels = $this->displayHandler->getFieldLabels(TRUE);
+    $options += $field_labels;
+    $grouping = $this->options['group'];
+    $form['group'] = [
+      '#type' => 'select',
+      '#title' => $this->t('Grouping field'),
+      '#options' => $options,
+      '#default_value' => $grouping,
+      '#description' => $this->t('You should specify a field by which to group the records.'),
+      '#required' => TRUE,
+    ];
   }
 
+  /**
+   * Set default options
+   */
+  protected function defineOptions() {
+    $options = parent::defineOptions();
+    $options['group'] = ['default' => []];
+    return $options;
+  }
 }
