@@ -23,14 +23,14 @@
     <ul>
         {% set i = 1 %}
         {% for row in rows.group %}
-          <li><a href="#tabs-{{ i }}">{{ row }}</a></li>
-        {% set i = i + 1 %}
+            <li><a href="#tabs-{{ i }}">{{ row }}</a></li>
+            {% set i = i + 1 %}
         {% endfor %}
     </ul>
 
     {% set j = 1 %}
     {% for row in rows %}
-            <div id="tabs-{{ j }}">{{ row.content }}</div>
+        <div id="tabs-{{ j }}">{{ row.content }}</div>
         {% set j = j + 1 %}
     {% endfor %}
 
