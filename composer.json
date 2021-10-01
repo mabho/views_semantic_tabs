@@ -1,5 +1,5 @@
 {
-  "name": "mabho/views_semantic_tabs",
+  "name": "drupal/views_semantic_tabs",
   "type": "drupal-module",
   "description": "Provides a views style plugin to display views results in jQuery UI Tabs.",
   "keywords": ["Drupal"],
