@@ -11,6 +11,7 @@
     "source": "http://cgit.drupalcode.org/views_semantic_tabs"
   },
   "require": {
-    "drupal/core": "^8 || ^9"
+    "drupal/core": "^8 || ^9",
+    "drupal/jquery_ui_tabs": "^1.1"
   }
 }
